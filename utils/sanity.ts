@@ -29,7 +29,7 @@ export interface BlogPost {
 }
 
 export const client = createClient({
-	projectId: "dx9ee77h",
+	projectId: "yrttf8j1",
 	dataset: "production",
 	useCdn: true,
 	apiVersion: "2023-05-03",
