@@ -3,7 +3,7 @@ import { getNewsPosts, urlFor, NewsPost } from "@/utils/news";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 
 const LatestNews = () => {

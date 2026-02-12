@@ -2,7 +2,7 @@
 
 import { logo } from "@/assets";
 import { headerLinks } from "@/utils/data";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";

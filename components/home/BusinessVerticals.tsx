@@ -1,7 +1,7 @@
 "use client";
 
 import { businessVerticals } from "@/utils/data";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
