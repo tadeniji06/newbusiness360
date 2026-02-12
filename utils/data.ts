@@ -1,4 +1,3 @@
-
 export interface HeaderLink {
 	title: string;
 	link: string;
@@ -12,25 +11,28 @@ export const headerLinks: HeaderLink[] = [
 	},
 	{
 		title: "News",
-		link: "/posts",
-	},
-	{
-		title: "People",
-		link: "/posts",
-	},
-	{
-		title: "Business",
-		link: "/posts",
-	},
-	{
-		title: "Companies",
-		link: "/posts",
+		link: "/news",
 	},
 	{
 		title: "Opportunities",
-		link: "/posts",
+		link: "/category/opportunities",
 	},
-
+	{
+		title: "Companies",
+		link: "/category/companies",
+	},
+	{
+		title: "Industry",
+		link: "/category/industry",
+	},
+	{
+		title: "People",
+		link: "/category/people",
+	},
+	{
+		title: "Tourism",
+		link: "/category/tourism",
+	},
 	{
 		title: "Reports",
 		link: "/reports",
@@ -43,32 +45,68 @@ export const headerLinks: HeaderLink[] = [
 		title: "About",
 		link: "/about",
 	},
-	{
-		title: "Contact",
-		link: "/contact",
-	},
 ];
 
-export const categories = [
+export const businessVerticals = [
 	{
-		title: "Robotics",
-		link: "/",
+		title: "Opportunities",
+		cmsTitle: "Opportunities",
+		slug: "opportunities",
+		icon: "mdi:lightbulb-on-outline",
+		description:
+			"Investment opportunities, grants, and career openings offering growth in the African market.",
+		color: "bg-green-600",
+		gradient: "from-green-600 to-green-900",
+		textColor: "text-green-600",
+		borderColor: "border-green-200",
 	},
 	{
-		title: "MarTech",
-		link: "/",
+		title: "Companies",
+		cmsTitle: "Companies",
+		slug: "companies",
+		icon: "mdi:domain",
+		description:
+			"Deep dives into top performing companies, emerging startups, and market leaders across the continent.",
+		color: "bg-blue-600",
+		gradient: "from-blue-600 to-blue-900",
+		textColor: "text-blue-600",
+		borderColor: "border-blue-200",
 	},
 	{
-		title: "AI & Emerging Tech",
-		link: "/",
+		title: "Industry",
+		cmsTitle: "Industry",
+		slug: "industry",
+		icon: "mdi:factory",
+		description:
+			"Analysis of key industrial sectors, manufacturing, and meaningful economic shifts driving development.",
+		color: "bg-slate-600",
+		gradient: "from-slate-600 to-slate-900",
+		textColor: "text-slate-600",
+		borderColor: "border-slate-200",
 	},
 	{
-		title: "Ecommerce",
-		link: "/",
+		title: "People",
+		cmsTitle: "People",
+		slug: "people",
+		icon: "mdi:account-group",
+		description:
+			"Stories of founders, leaders, and innovators shaping the African business landscape.",
+		color: "bg-purple-600",
+		gradient: "from-purple-600 to-purple-900",
+		textColor: "text-purple-600",
+		borderColor: "border-purple-200",
 	},
 	{
-		title: "Sports",
-		link: "/",
+		title: "Tourism",
+		cmsTitle: "Tourism",
+		slug: "tourism",
+		icon: "mdi:airplane",
+		description:
+			"Exploring travel, hospitality, and the vibrant tourism economy of Africa.",
+		color: "bg-orange-600",
+		gradient: "from-orange-600 to-orange-900",
+		textColor: "text-orange-600",
+		borderColor: "border-orange-200",
 	},
 ];
 
