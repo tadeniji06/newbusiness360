@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "@/layouts/Footer";
 import Header from "@/layouts/Header";
 import ClarityScript from "@/components/Clarity";
+import WhatsAppBanner from "@/components/WhatsAppBanner";
 
 export const metadata: Metadata = {
 	title: "Business360 | Global Business & Innovation",
@@ -49,6 +50,7 @@ export default function RootLayout({
 				<Header />
 				{children}
 				<Footer />
+				<WhatsAppBanner />
 				<ClarityScript />
 			</body>
 		</html>
