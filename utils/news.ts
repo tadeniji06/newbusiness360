@@ -11,6 +11,10 @@ export interface NewsPost {
 	mainImage?: SanityImageSource;
 	publishedAt: string;
 	body: any[];
+	author?: {
+		name: string;
+		image?: SanityImageSource;
+	};
 	excerpt?: string;
 }
 
@@ -30,7 +34,7 @@ export const getNewsPosts = async (
 	limit = 20,
 	offset = 0,
 ): Promise<NewsPost[]> => {
-	const query = `*[_type == "news"] | order(publishedAt desc) [${offset}...${
+	const query = `*[_type == "post"] | order(publishedAt desc) [${offset}...${
 		offset + limit
 	}] {
     _id,
@@ -39,6 +43,10 @@ export const getNewsPosts = async (
     mainImage,
     publishedAt,
     body,
+    author->{
+        name,
+        image
+    },
     "excerpt": pt::text(body)[0...200]
   }`;
 
@@ -49,13 +57,18 @@ export const getNewsPosts = async (
 export const getNewsPost = async (
 	slug: string,
 ): Promise<NewsPost | null> => {
-	const query = `*[_type == "news" && slug.current == $slug][0] {
+	const query = `*[_type == "post" && slug.current == $slug][0] {
     _id,
     title,
     slug,
     mainImage,
     publishedAt,
     body,
+    author->{
+        name,
+        image,
+        bio
+    },
     "excerpt": pt::text(body)[0...200]
   }`;
 
@@ -64,13 +77,17 @@ export const getNewsPost = async (
 
 // Fetch latest news for Hero section (e.g. top 1)
 export const getLatestNews = async (): Promise<NewsPost | null> => {
-	const query = `*[_type == "news"] | order(publishedAt desc)[0] {
+	const query = `*[_type == "post"] | order(publishedAt desc)[0] {
     _id,
     title,
     slug,
     mainImage,
     publishedAt,
     body,
+    author->{
+        name,
+        image,
+    },
     "excerpt": pt::text(body)[0...300]
   }`;
 

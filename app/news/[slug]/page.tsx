@@ -46,78 +46,137 @@ export default async function NewsPostPage({ params }: Props) {
 	}
 
 	return (
-		<article className='min-h-screen bg-gray-50 pb-20'>
+		<article className='min-h-screen bg-gray-50/50 pb-20'>
 			{/* Hero Header */}
-			<div className='relative h-[60vh] min-h-[400px] w-full bg-black overflow-hidden'>
+			<div className='relative h-[60vh] min-h-[500px] w-full bg-black overflow-hidden'>
 				{post.mainImage ? (
 					<Image
 						src={urlFor(post.mainImage).width(1600).height(900).url()}
 						alt={post.title}
 						fill
-						className='object-cover opacity-60'
+						className='object-cover opacity-70'
 						priority
 					/>
 				) : (
 					<div className='absolute inset-0 bg-gradient-to-br from-gray-900 to-black opacity-90' />
 				)}
-				<div className='absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent' />
+				<div className='absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent' />
 
 				<div className='container mx-auto px-6 h-full flex flex-col justify-end pb-16 relative z-10'>
 					<Link
 						href='/news'
-						className='inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors font-medium text-sm uppercase tracking-wide group'
+						className='inline-flex items-center gap-2 text-white/70 hover:text-white mb-8 transition-colors font-medium text-sm uppercase tracking-widest group w-fit'
 					>
-						<span className='group-hover:-translate-x-1 transition-transform'>
-							←
-						</span>{" "}
+						<span className='bg-white/10 p-1.5 rounded-full group-hover:bg-primary-red transition-colors duration-300'>
+							<Icon icon='mdi:arrow-left' />
+						</span>
 						Back to News
 					</Link>
 
-					<h1 className='text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight drop-shadow-lg'>
-						{post.title}
-					</h1>
+					<div className='max-w-4xl'>
+						<h1 className='text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight drop-shadow-lg tracking-tight'>
+							{post.title}
+						</h1>
 
-					<div className='flex items-center gap-6 text-gray-200 text-sm md:text-base font-medium'>
-						<span className='flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/10'>
-							📅{" "}
-							{new Date(post.publishedAt).toLocaleDateString(
-								"en-US",
-								{
-									year: "numeric",
-									month: "long",
-									day: "numeric",
-								},
-							)}
-						</span>
+						<div className='flex flex-wrap items-center gap-6 md:gap-8 text-white/90'>
+							{/* Author */}
+							{post.author ? (
+								<div className='flex items-center gap-3 pr-6 border-r border-white/20'>
+									{post.author.image ? (
+										<div className='relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-white/30'>
+											<Image
+												src={urlFor(post.author.image)
+													.width(100)
+													.height(100)
+													.url()}
+												alt={post.author.name}
+												fill
+												className='object-cover'
+											/>
+										</div>
+									) : (
+										<div className='w-12 h-12 rounded-full bg-primary-red flex items-center justify-center text-sm font-bold ring-2 ring-white/30'>
+											{post.author.name.charAt(0)}
+										</div>
+									)}
+									<div>
+										<div className='text-xs text-white/60 uppercase tracking-wider font-semibold'>
+											Written by
+										</div>
+										<div className='font-semibold text-lg'>
+											{post.author.name}
+										</div>
+									</div>
+								</div>
+							) : null}
+
+							<div className='flex items-center gap-3'>
+								<div className='bg-white/10 p-2 rounded-full backdrop-blur-sm'>
+									<Icon
+										icon='mdi:calendar-blank-outline'
+										className='text-xl'
+									/>
+								</div>
+								<div>
+									<div className='text-xs text-white/60 uppercase tracking-wider font-semibold'>
+										Published
+									</div>
+									<div className='font-semibold text-lg'>
+										{new Date(post.publishedAt).toLocaleDateString(
+											"en-US",
+											{
+												year: "numeric",
+												month: "long",
+												day: "numeric",
+											},
+										)}
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			{/* Content */}
-			<div className='container mx-auto px-6 -mt-10 relative z-20'>
-				<div className='bg-white rounded-2xl shadow-xl p-8 md:p-12 lg:p-16 max-w-4xl mx-auto border border-gray-100'>
-					<div className='prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-primary-red prose-img:rounded-xl prose-img:shadow-md'>
+			<div className='container mx-auto px-6 -mt-20 relative z-20'>
+				<div className='bg-white rounded-3xl shadow-xl p-8 md:p-14 lg:p-20 max-w-4xl mx-auto border border-gray-100'>
+					<div className='prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-p:leading-loose prose-a:text-primary-red prose-img:rounded-2xl prose-img:shadow-lg prose-blockquote:border-l-primary-red prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:rounded-r-lg'>
 						<PortableText value={post.body} />
 					</div>
 
-					<div className='mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6'>
+					{/* Post Footer / Share / Tags could go here */}
+					<div className='mt-16 pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6'>
 						<div className='flex flex-col'>
-							<span className='text-sm text-gray-400 uppercase tracking-widest font-bold mb-1'>
-								Published
+							<span className='text-xs text-gray-400 uppercase tracking-widest font-bold mb-2'>
+								Share this story
 							</span>
-							<span className='text-gray-900 font-medium'>
-								{new Date(post.publishedAt).toLocaleDateString(
-									"en-US",
-									{ dateStyle: "full" },
-								)}
-							</span>
+							<div className='flex gap-4'>
+								{[
+									"mdi:twitter",
+									"mdi:linkedin",
+									"mdi:facebook",
+									"mdi:whatsapp",
+								].map((icon) => (
+									<button
+										key={icon}
+										className='p-2 bg-gray-50 hover:bg-gray-100 rounded-full text-gray-600 hover:text-primary-red transition-colors'
+									>
+										<Icon icon={icon} className='text-xl' />
+									</button>
+								))}
+							</div>
 						</div>
 
 						<Link
 							href='/news'
-							className='px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full font-medium transition-colors cursor-pointer'
+							className='group inline-flex items-center gap-2 px-8 py-3 bg-gray-900 hover:bg-black text-white rounded-full font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-1'
 						>
 							View All News
+							<Icon
+								icon='mdi:arrow-right'
+								className='group-hover:translate-x-1 transition-transform'
+							/>
 						</Link>
 					</div>
 				</div>
