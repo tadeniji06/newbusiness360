@@ -29,10 +29,10 @@ export const headerLinks: HeaderLink[] = [
 		title: "People",
 		link: "/category/people",
 	},
-	{
-		title: "Tourism",
-		link: "/category/tourism",
-	},
+	// {
+	// 	title: "Tourism",
+	// 	link: "/category/tourism",
+	// },
 	{
 		title: "Reports",
 		link: "/reports",
