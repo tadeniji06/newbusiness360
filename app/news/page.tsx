@@ -3,8 +3,8 @@ import NewsList from "@/components/news/NewsList";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Newsroom - Showcase Africa",
-	description: "Latest news and updates from Showcase Africa.",
+	title: "Newsroom - Business360",
+	description: "Latest news and updates from Business360.",
 };
 
 export const revalidate = 60; // Revalidate every 60 seconds

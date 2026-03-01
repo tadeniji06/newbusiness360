@@ -33,12 +33,12 @@ export default function NewsList({ posts }: NewsListProps) {
 	const gridPosts = posts.slice(1);
 
 	return (
-		<div className='pb-20 bg-gray-50/50'>
+		<div className='pb-20 bg-gray-50/20'>
 			{/* Hero Section */}
-			<section className='container mx-auto px-6 -mt-10 relative z-10 mb-20'>
+			<section className='container mx-auto px-6 -mt-16 relative z-10 mb-24'>
 				<Link
 					href={`/news/${heroPost.slug.current}`}
-					className='group block relative h-[500px] md:h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 hover:shadow-primary-red/10 border border-gray-100'
+					className='group block relative h-[550px] md:h-[650px] w-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-700 hover:shadow-primary-red/20 border border-white/20'
 				>
 					{heroPost.mainImage ? (
 						<Image
@@ -48,30 +48,30 @@ export default function NewsList({ posts }: NewsListProps) {
 								.url()}
 							alt={heroPost.title}
 							fill
-							className='object-cover transition-transform duration-1000 group-hover:scale-105'
+							className='object-cover transition-transform duration-[1.5s] group-hover:scale-110'
 							priority
 						/>
 					) : (
-						<div className='w-full h-full bg-gray-900 flex items-center justify-center'>
+						<div className='w-full h-full bg-slate-900 flex items-center justify-center'>
 							<Icon
-								icon='mdi:image-off-outline'
-								className='text-white/10 text-8xl'
+								icon='mdi:newspaper-variant-outline'
+								className='text-white/10 text-9xl animate-pulse'
 							/>
 						</div>
 					)}
 
-					<div className='absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-95' />
+					<div className='absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-100' />
 
-					<div className='absolute bottom-0 left-0 w-full p-8 md:p-14'>
+					<div className='absolute bottom-0 left-0 w-full p-8 md:p-16 lg:p-20'>
 						<div className='max-w-4xl'>
-							<div className='flex items-center gap-3 mb-5'>
-								<span className='bg-primary-red text-white text-[10px] md:text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg shadow-primary-red/20'>
-									Featured News
+							<div className='flex items-center gap-4 mb-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500'>
+								<span className='bg-primary-red text-white text-[10px] md:text-xs font-black uppercase tracking-[0.2em] px-4 py-2 rounded-lg shadow-xl shadow-primary-red/30'>
+									Featured Story
 								</span>
-								<span className='flex items-center gap-1.5 text-gray-300 text-xs md:text-sm font-medium tracking-wide'>
+								<span className='flex items-center gap-2 text-white/80 text-xs md:text-sm font-bold'>
 									<Icon
-										icon='mdi:clock-outline'
-										className='text-primary-red'
+										icon='mdi:calendar-multiselect'
+										className='text-primary-red text-lg'
 									/>
 									{new Date(heroPost.publishedAt).toLocaleDateString(
 										"en-US",
@@ -84,22 +84,21 @@ export default function NewsList({ posts }: NewsListProps) {
 								</span>
 							</div>
 
-							<h2 className='text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-sm'>
+							<h2 className='text-3xl md:text-5xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tight drop-shadow-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75'>
 								{heroPost.title}
 							</h2>
 
 							{heroPost.excerpt && (
-								<p className='text-gray-200 text-base md:text-xl line-clamp-2 md:line-clamp-3 max-w-3xl mb-8 leading-relaxed font-light'>
+								<p className='text-white/90 text-base md:text-2xl line-clamp-2 md:line-clamp-3 max-w-3xl mb-10 leading-relaxed font-medium translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150'>
 									{heroPost.excerpt}
 								</p>
 							)}
 
-							<div className='flex items-center justify-between border-t border-white/10 pt-6 mt-auto'>
-								{/* Author Info */}
+							<div className='flex items-center justify-between border-t border-white/20 pt-8 mt-auto translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200'>
 								{heroPost.author && (
-									<div className='flex items-center gap-3'>
-										{heroPost.author.image ? (
-											<div className='relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/20'>
+									<div className='flex items-center gap-4'>
+										<div className='relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-white/50 group-hover:ring-primary-red transition-all'>
+											{heroPost.author.image ? (
 												<Image
 													src={urlFor(heroPost.author.image)
 														.width(100)
@@ -109,29 +108,32 @@ export default function NewsList({ posts }: NewsListProps) {
 													fill
 													className='object-cover'
 												/>
-											</div>
-										) : (
-											<div className='w-10 h-10 rounded-full bg-primary-red text-white flex items-center justify-center font-bold text-sm ring-2 ring-white/20'>
-												{heroPost.author.name.charAt(0)}
-											</div>
-										)}
+											) : (
+												<div className='w-full h-full bg-primary-red text-white flex items-center justify-center font-bold text-lg'>
+													{heroPost.author.name.charAt(0)}
+												</div>
+											)}
+										</div>
 										<div className='flex flex-col'>
-											<span className='text-white text-sm font-semibold tracking-wide'>
+											<span className='text-white text-sm font-black tracking-tight'>
 												{heroPost.author.name}
 											</span>
-											<span className='text-gray-400 text-xs uppercase tracking-wider'>
-												Author
+											<span className='text-white/60 text-[10px] uppercase tracking-widest font-bold'>
+												Insight Lead
 											</span>
 										</div>
 									</div>
 								)}
 
-								<span className='flex items-center gap-2 text-white font-semibold text-sm md:text-base group-hover:translate-x-2 transition-transform duration-300'>
+								<div className='flex items-center gap-3 text-white font-black text-sm md:text-base uppercase tracking-widest'>
 									Read Full Story
-									<div className='bg-white/10 rounded-full p-1 group-hover:bg-primary-red transition-colors duration-300'>
-										<Icon icon='mdi:arrow-right' />
+									<div className='bg-white text-black rounded-full p-2 group-hover:bg-primary-red group-hover:text-white transition-all duration-300 shadow-xl'>
+										<Icon
+											icon='mdi:arrow-top-right'
+											className='text-xl'
+										/>
 									</div>
-								</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -141,24 +143,22 @@ export default function NewsList({ posts }: NewsListProps) {
 			{/* Grid Section */}
 			{gridPosts.length > 0 && (
 				<section className='container mx-auto px-6'>
-					<div className='flex items-center justify-between mb-12 border-b border-gray-200 pb-4'>
-						<h3 className='text-3xl font-bold text-gray-900 flex items-center gap-3 tracking-tight'>
-							<Icon
-								icon='mdi:newspaper-variant-multiple-outline'
-								className='text-primary-red'
-							/>
-							Recent Stories
+					<div className='flex items-center gap-4 mb-16 px-4'>
+						<div className='w-2 h-10 bg-primary-red rounded-full' />
+						<h3 className='text-4xl font-black text-gray-900 tracking-tighter uppercase'>
+							Latest Reports
 						</h3>
+						<div className='flex-1 h-px bg-gray-200' />
 					</div>
 
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12'>
+					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14'>
 						{gridPosts.map((post) => (
 							<Link
 								href={`/news/${post.slug.current}`}
 								key={post._id}
-								className='group flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2'
+								className='group flex flex-col h-full bg-white rounded-[2rem] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] transition-all duration-500 border border-gray-100/80 hover:-translate-y-3'
 							>
-								<div className='relative h-64 w-full overflow-hidden bg-gray-100'>
+								<div className='relative h-72 w-full overflow-hidden bg-gray-50'>
 									{post.mainImage ? (
 										<Image
 											src={urlFor(post.mainImage)
@@ -171,25 +171,24 @@ export default function NewsList({ posts }: NewsListProps) {
 											sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 										/>
 									) : (
-										<div className='w-full h-full flex items-center justify-center bg-gray-50'>
+										<div className='w-full h-full flex items-center justify-center'>
 											<Icon
-												icon='mdi:image-outline'
-												className='text-gray-300 text-5xl'
+												icon='mdi:image-off-outline'
+												className='text-gray-200 text-6xl'
 											/>
 										</div>
 									)}
-									<div className='absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold text-gray-900 shadow-md transform group-hover:scale-105 transition-transform'>
-										News
+									<div className='absolute top-6 left-6 bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-primary-red shadow-lg transform group-hover:-translate-y-1 transition-transform'>
+										Article
 									</div>
-									<div className='absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+									<div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
 								</div>
 
-								<div className='p-8 flex flex-col flex-1'>
-									<div className='flex items-center gap-2 text-xs text-gray-500 mb-4 font-semibold uppercase tracking-wider'>
+								<div className='p-8 lg:p-10 flex flex-col flex-1'>
+									<div className='flex items-center gap-2 text-[10px] text-gray-400 mb-5 font-black uppercase tracking-[0.15em]'>
 										<Icon
 											icon='mdi:calendar-blank'
-											className='text-primary-red'
-											height={16}
+											className='text-primary-red text-base'
 										/>
 										{new Date(post.publishedAt).toLocaleDateString(
 											"en-US",
@@ -201,22 +200,21 @@ export default function NewsList({ posts }: NewsListProps) {
 										)}
 									</div>
 
-									<h3 className='text-xl md:text-2xl font-bold text-gray-900 mb-4 line-clamp-2 leading-tight group-hover:text-primary-red transition-colors duration-300'>
+									<h3 className='text-2xl font-black text-gray-900 mb-5 line-clamp-2 leading-[1.2] group-hover:text-primary-red transition-colors duration-300 tracking-tight'>
 										{post.title}
 									</h3>
 
 									{post.excerpt && (
-										<p className='text-gray-600 text-sm md:text-base line-clamp-3 mb-6 flex-1 leading-relaxed font-light'>
+										<p className='text-gray-500 text-base md:text-lg line-clamp-3 mb-8 flex-1 leading-relaxed font-medium selection:bg-primary-red/10'>
 											{post.excerpt}
 										</p>
 									)}
 
-									<div className='mt-auto pt-6 border-t border-gray-100 flex items-center justify-between'>
-										{/* Author Mini */}
+									<div className='mt-auto pt-8 border-t border-gray-50 flex items-center justify-between'>
 										{post.author ? (
-											<div className='flex items-center gap-2'>
-												{post.author.image ? (
-													<div className='relative w-8 h-8 rounded-full overflow-hidden bg-gray-100'>
+											<div className='flex items-center gap-3'>
+												<div className='relative w-9 h-9 rounded-full overflow-hidden bg-gray-100 ring-2 ring-gray-50'>
+													{post.author.image ? (
 														<Image
 															src={urlFor(post.author.image)
 																.width(48)
@@ -226,28 +224,29 @@ export default function NewsList({ posts }: NewsListProps) {
 															fill
 															className='object-cover'
 														/>
-													</div>
-												) : (
-													<div className='w-8 h-8 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center text-xs font-bold'>
-														{post.author.name.charAt(0)}
-													</div>
-												)}
-												<span className='text-xs font-medium text-gray-900 line-clamp-1 max-w-[100px]'>
+													) : (
+														<div className='w-full h-full bg-gray-100 text-gray-400 flex items-center justify-center text-xs font-black'>
+															{post.author.name.charAt(0)}
+														</div>
+													)}
+												</div>
+												<span className='text-xs font-black text-gray-900 uppercase tracking-tighter'>
 													{post.author.name}
 												</span>
 											</div>
 										) : (
-											<span className='text-xs text-gray-400'>
-												By Showcase Africa
+											<span className='text-[10px] font-black text-gray-300 uppercase tracking-widest'>
+												Business360 Team
 											</span>
 										)}
 
-										<span className='inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 text-gray-400 group-hover:bg-primary-red group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:shadow-primary-red/30'>
+										<div className='flex items-center gap-2 text-primary-red font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0'>
+											Full View
 											<Icon
 												icon='mdi:arrow-right'
-												className='transform group-hover:-rotate-45 transition-transform duration-300'
+												className='text-base'
 											/>
-										</span>
+										</div>
 									</div>
 								</div>
 							</Link>
