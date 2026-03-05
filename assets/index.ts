@@ -14,7 +14,7 @@ import p2 from "./podcast 2.png";
 import pod from "./pod.jpg";
 import savm from "./savm.png";
 import saMag from "./saMag.png";
-import bc from './bc.jpeg';
+import bc from "./bc.jpeg";
 
 import bizz from "./bizz.jpg";
 import culture from "./culture.jpg";
@@ -23,10 +23,12 @@ import politics from "./politics.jpg";
 import sports from "./sports.jpg";
 import travel from "./travel.jpg";
 import report from "./backky.jpg";
-import a1 from './aa1.jpeg';
+import a1 from "./aa1.jpeg";
+import cover from "./cover.jpeg";
 export {
 	logo,
 	bc,
+	cover,
 	report,
 	a1,
 	hero,
