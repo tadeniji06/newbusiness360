@@ -20,7 +20,7 @@ import bizz from "./bizz.jpg";
 import culture from "./culture.jpg";
 import ent from "./ent.jpg";
 import politics from "./politics.jpg";
-import sports from "./sports.jpg";
+import sports from "./sports.jpg";  
 import travel from "./travel.jpg";
 import report from "./backky.jpg";
 import a1 from "./aa1.jpeg";
